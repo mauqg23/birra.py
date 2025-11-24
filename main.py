@@ -55,3 +55,30 @@ while True:
     print(
         "1. Menu\n2.Pedir Cerveza\n3.Hacer critica.\n4.ver el promedio de rating de una cerveza\n5.Hacer reestock\n6.salir."
     )
+    try:
+        eleccion = int(input("Elija una opcion"))
+    except ValueError:
+        print("Porfavor elija un valor numerico de los predeterminados")
+    if eleccion == 1:
+        b1.catalogo(lista_cervezas)
+        print("thankyou")
+    if eleccion == 2:
+        print("Eligio comprar una cerveza")
+        for i, cerveza in enumerate(lista_cervezas, start = 1):
+            print(f"{i} {cerveza.name}")
+        try:
+            eleccion_birra = int(input("Elija el numero de la cerveza que quiere pedir: "))
+            cerveza_seleccionada = lista_cervezas[eleccion_birra -1]
+            cerveza_seleccionada.pedir()
+        except (ValueError, IndexError):
+            print("Eleccion invalida")
+    if eleccion == 3:
+        print("Eligio calificar una cerveza: ")
+        for i, cerveza in enumerate(lista_cervezas, start = 1):
+            print(f"{i} {cerveza.name}")
+        try:
+            eleccion_birra = int(input("Seleccione que cerveza calificar: "))
+            cerveza_seleccionada = lista_cervezas[eleccion_birra -1]
+            cerveza_seleccionada.rating()
+        except (ValueError, IndexError):
+            print("Eleccion invalida")
